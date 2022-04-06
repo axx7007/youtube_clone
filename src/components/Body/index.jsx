@@ -18,9 +18,13 @@ export const Body = () => {
     var comedyFilter = data.filter((value) => value.type === "comedy");
     setKinoData(comedyFilter);
   };
+  const onAll = () => {
+    setKinoData(data);
+  };
   return (
     <Container>
       <Header>
+        <Header.Wrapper onClick={onAll}>Hammasi</Header.Wrapper>
         <Header.Wrapper onClick={onUzbek}>Uzbek</Header.Wrapper>
         <Header.Wrapper onClick={onJangari}>Jangari</Header.Wrapper>
         <Header.Wrapper onClick={onComedy}>Comedy</Header.Wrapper>

@@ -19,18 +19,16 @@ import {
 const Navbar = () => {
   const [kino, setKino] = useContext(Kino);
   const [data, setData] = useContext(Side);
-  const [kinodata, setKinoData] = useState(kino);
   const [search, setSearch] = useState("");
 
   const onSearch = (e) => {
-    setSearch(e.target.value);
+    console.log(e.target.value);
+    var filtered = kino.map((item) => {
+      return item.name.toLowerCase().includes(e.target.value);
+    });
+    setKino(filtered);
   };
-  const ClickSearch = () => {
-    var searched = kinodata.filter((value, index) =>
-      value.name.toLowerCase().includes(search)
-    );
-    setKinoData(searched);
-  };
+
   return (
     <Container>
       <Container.Wrapper>
@@ -40,7 +38,7 @@ const Navbar = () => {
         </Flexing>
         <Flexing>
           <SearchInput type="text" placeholder="search" onChange={onSearch} />
-          <SearchDiv onClick={ClickSearch}>
+          <SearchDiv>
             <SearchIcon />
           </SearchDiv>
         </Flexing>
