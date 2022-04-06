@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Body from "../components/Body";
 import { Change, Container } from "./style";
-import { Side } from "../context";
+import { Side } from "../context/activecontext";
 
 const Root = () => {
   const [data, setData] = useContext(Side);
