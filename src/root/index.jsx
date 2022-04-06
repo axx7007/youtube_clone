@@ -12,14 +12,14 @@ const Root = () => {
     <Container>
       <Navbar />
       <Container.Wrapper>
-        {/* {data ? ( */}
-        {/* <Change> */}
-        <Sidebar />
-        <Body />
-        {/* </Change> */}
-        {/* ) : ( */}
-        {/* <Body /> */}
-        {/* )} */}
+        {data ? (
+          <Change>
+            <Sidebar />
+            <Body />
+          </Change>
+        ) : (
+          <Body />
+        )}
       </Container.Wrapper>
     </Container>
   );

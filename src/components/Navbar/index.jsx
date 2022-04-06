@@ -18,7 +18,6 @@ import {
 
 const Navbar = () => {
   const [data, setData] = useContext(Side);
-  console.log(data, "navbar");
   return (
     <Container>
       <Container.Wrapper>
