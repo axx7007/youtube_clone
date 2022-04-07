@@ -22,9 +22,9 @@ const Navbar = () => {
   const [datas, setDatas] = useContext(Side);
   const [search, setSearch] = useState("");
 
-  const onSearch = (e) => {
+  const onSearch = () => {
     var filtered = data.filter((item) => {
-      return item.name.toLowerCase().includes(e.target.value.toLowerCase());
+      return item.name.toLowerCase().includes(search.toLowerCase());
     });
     setDataContext(filtered);
   };
@@ -37,8 +37,12 @@ const Navbar = () => {
           <Logo />
         </Flexing>
         <Flexing>
-          <SearchInput type="text" placeholder="search" onChange={onSearch} />
-          <SearchDiv>
+          <SearchInput
+            type="text"
+            placeholder="search"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <SearchDiv onClick={onSearch}>
             <SearchIcon />
           </SearchDiv>
         </Flexing>

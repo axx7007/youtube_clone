@@ -1,33 +1,37 @@
 import React, { useContext, useState } from "react";
 import { data } from "../../mock/kino";
-import { Card, Cards, Container, Img, MiniImg, Title, Header } from "./style";
+import { btnData } from "../../mock/button";
+import {
+  Card,
+  Cards,
+  Container,
+  Img,
+  MiniImg,
+  Title,
+  Header,
+  CategoryBtn,
+} from "./style";
 import { Kino } from "../../context/datacontext";
 export const Body = () => {
   const [dataContext, setDataContext] = useContext(Kino);
   const [kinodata, setKinoData] = useState(data);
-
-  const onUzbek = () => {
-    var filtereduz = data.filter((value) => value.type == "uzbek");
-    setKinoData(filtereduz);
-  };
-  const onJangari = () => {
-    var filjang = data.filter((value) => value.type === "jangari");
-    setKinoData(filjang);
-  };
-  const onComedy = () => {
-    var comedyFilter = data.filter((value) => value.type === "comedy");
-    setKinoData(comedyFilter);
-  };
-  const onAll = () => {
-    setKinoData(data);
+  const [variable, setVariable] = useState("");
+  const onChange = (btndata) => {
+    console.log(typeof btndata);
+    var filtered = kinodata.filter((item) => item.type === btndata);
+    console.log(filtered);
+    // setDataContext(filtered);
   };
   return (
     <Container>
       <Header>
-        <Header.Wrapper onClick={onAll}>Hammasi</Header.Wrapper>
-        <Header.Wrapper onClick={onUzbek}>Uzbek</Header.Wrapper>
-        <Header.Wrapper onClick={onJangari}>Jangari</Header.Wrapper>
-        <Header.Wrapper onClick={onComedy}>Comedy</Header.Wrapper>
+        {btnData.map((value) => {
+          return (
+            <CategoryBtn key={value.id} onClick={() => onChange(value.item)}>
+              {value.item}
+            </CategoryBtn>
+          );
+        })}
       </Header>
       <Cards>
         {dataContext.map((value) => {
