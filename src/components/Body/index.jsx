@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-
+import { data } from "../../mock/kino";
 import { Card, Cards, Container, Img, MiniImg, Title, Header } from "./style";
 import { Kino } from "../../context/datacontext";
 export const Body = () => {
-  const [data, setData] = useContext(Kino);
+  const [dataContext, setDataContext] = useContext(Kino);
   const [kinodata, setKinoData] = useState(data);
 
   const onUzbek = () => {
@@ -30,7 +30,7 @@ export const Body = () => {
         <Header.Wrapper onClick={onComedy}>Comedy</Header.Wrapper>
       </Header>
       <Cards>
-        {kinodata.map((value) => {
+        {dataContext.map((value) => {
           console.log(value.name);
           return (
             <Card key={value.id}>

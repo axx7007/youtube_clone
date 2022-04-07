@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Side } from "../../context/activecontext";
 import { Kino } from "../../context/datacontext";
 import MainPic from "../../assets/imgs/main.jpg";
+import { data } from "../../mock/kino";
 import {
   Container,
   MenuIcon,
@@ -17,23 +18,22 @@ import {
 } from "./style";
 
 const Navbar = () => {
-  const [kino, setKino] = useContext(Kino);
-  const [data, setData] = useContext(Side);
+  const [datacontext, setDataContext] = useContext(Kino);
+  const [datas, setDatas] = useContext(Side);
   const [search, setSearch] = useState("");
 
   const onSearch = (e) => {
-    console.log(e.target.value);
-    var filtered = kino.map((item) => {
-      return item.name.toLowerCase().includes(e.target.value);
+    var filtered = data.filter((item) => {
+      return item.name.toLowerCase().includes(e.target.value.toLowerCase());
     });
-    setKino(filtered);
+    setDataContext(filtered);
   };
 
   return (
     <Container>
       <Container.Wrapper>
         <Flexing>
-          <MenuIcon onClick={() => setData(!data)} />
+          <MenuIcon onClick={() => setDatas(!datas)} />
           <Logo />
         </Flexing>
         <Flexing>

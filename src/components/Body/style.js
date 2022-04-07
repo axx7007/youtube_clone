@@ -37,6 +37,9 @@ margin-top:20px ;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   grid-auto-rows: minmax(100px, 400px);
+  /* display:flex;
+  align-items:center ;
+  flex-wrap:nowrap ; */
 `
 Container.Wrapper= styled.div`
 display:flex;
